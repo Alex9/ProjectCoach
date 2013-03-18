@@ -1,5 +1,8 @@
 ﻿using System;
+using Ninject;
+using Ninject.Activation.Blocks;
 using Raven.Client;
+using Xemio.ProjectCoach.Core.Services;
 
 namespace Xemio.ProjectCoach.Core.ServiceManagement
 {
@@ -10,20 +13,19 @@ namespace Xemio.ProjectCoach.Core.ServiceManagement
     public class ServiceSession : IDisposable
     {
         #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceSession"/> class.
         /// </summary>
-        /// <param name="serviceResolver">The service resolver.</param>
-        internal ServiceSession(ServiceResolver serviceResolver)
+        /// <param name="ninjectKernel">The ninject-kernel used for dependency injection.</param>
+        internal ServiceSession(IKernel ninjectKernel)
         {
-            this._serviceResolver = serviceResolver;
-            this._serviceScope = serviceResolver.BeginScope();
+            this._activationBlock = ninjectKernel.BeginBlock();
         }
         #endregion Constructors
 
         #region Fields
-        private readonly ServiceResolver _serviceResolver;
-        private readonly IDisposable _serviceScope;
+        private readonly IActivationBlock _activationBlock;
         #endregion Fields
 
         #region Methods
@@ -33,7 +35,7 @@ namespace Xemio.ProjectCoach.Core.ServiceManagement
         /// <typeparam name="T">The type of the service.</typeparam>
         public T GetService<T>()
         {
-            return this._serviceResolver.Resolve<T>();
+            return this._activationBlock.Get<T>();
         }
         /// <summary>
         /// Saves all changes to the database.
@@ -51,7 +53,7 @@ namespace Xemio.ProjectCoach.Core.ServiceManagement
         /// </summary>
         public void Dispose()
         {
-            this._serviceScope.Dispose();
+            this._activationBlock.Dispose();
         }
         #endregion IDisposable Member
     }

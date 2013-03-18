@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using CuttingEdge.Conditions;
+using Ninject;
 using Raven.Client;
 using Raven.Client.Indexes;
 
@@ -20,15 +21,16 @@ namespace Xemio.ProjectCoach.Core.ServiceManagement
         {
             Condition.Requires(documentStore)
                 .IsNotNull();
-
-            this._serviceResolver = new ServiceResolver(documentStore, assemblies);
+            
+            this._ninjectKernel.Load(new ServiceModule(documentStore));
+            this._ninjectKernel.Load(assemblies);
 
             this.InitializeDocumentStore(documentStore);
         }
         #endregion Constructors
 
         #region Fields
-        private readonly ServiceResolver _serviceResolver;
+        private readonly IKernel _ninjectKernel = new StandardKernel();
         #endregion Fields
 
         #region Methods
@@ -37,7 +39,7 @@ namespace Xemio.ProjectCoach.Core.ServiceManagement
         /// </summary>
         public ServiceSession OpenSession()
         {
-            return new ServiceSession(this._serviceResolver);
+            return new ServiceSession(this._ninjectKernel);
         }
         #endregion Methods
 

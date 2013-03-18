@@ -16,6 +16,10 @@ namespace Xemio.ProjectCoach.Entities.Users
         /// </summary>
         public string Username { get; set; }
         /// <summary>
+        /// Gets or sets the email address.
+        /// </summary>
+        public string EmailAddress { get; set; }
+        /// <summary>
         /// Gets or sets the password hash.
         /// </summary>
         public byte[] PasswordHash { get; set; }
@@ -23,9 +27,5 @@ namespace Xemio.ProjectCoach.Entities.Users
         /// Gets or sets the salt.
         /// </summary>
         public byte[] Salt { get; set; }
-        /// <summary>
-        /// Gets or sets the email address.
-        /// </summary>
-        public string EmailAddress { get; set; }
     }
 }
