@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Xemio.ProjectCoach.Infrastructure.Exceptions
+namespace Xemio.ProjectCoach.Core.Exceptions
 {
     /// <summary>
     /// Base exception for xemio projects.

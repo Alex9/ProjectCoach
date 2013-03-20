@@ -12,9 +12,9 @@ namespace Xemio.ProjectCoach.Entities
     public abstract class AggregateRoot
     {
         /// <summary>
-        /// Gets or sets the ID.
+        /// Gets or sets the Id.
         /// </summary>
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         #region Overriden Methods
         /// <summary>
@@ -29,14 +29,14 @@ namespace Xemio.ProjectCoach.Entities
                 return false;
             }
 
-            return this.ID == aggregateRoot.ID;
+            return this.Id == aggregateRoot.Id;
         }
         /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         public override int GetHashCode()
         {
-            return this.ID.GetHashCode();
+            return this.Id.GetHashCode();
         }
         #endregion Overriden Methods
     }

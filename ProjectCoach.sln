@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCoach.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCoach.Models", "ProjectCoach.Models\ProjectCoach.Models.csproj", "{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCoach.ServiceManagementTests", "ProjectCoach.ServiceManagementTests\ProjectCoach.ServiceManagementTests.csproj", "{9BCEFC2D-2734-4F78-A444-59022335E963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCEFC2D-2734-4F78-A444-59022335E963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCEFC2D-2734-4F78-A444-59022335E963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCEFC2D-2734-4F78-A444-59022335E963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCEFC2D-2734-4F78-A444-59022335E963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{D81C5148-6014-4352-A7EA-FF22781544AE} = {3F7C043E-57A5-4D3A-ABCB-5CD8C5CB118F}
 		{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C} = {3F7C043E-57A5-4D3A-ABCB-5CD8C5CB118F}
 		{3731F92C-C209-4DAC-A490-5B38FCE6F2B2} = {31C27C47-58F9-40AC-BD34-A678B78B5755}
+		{9BCEFC2D-2734-4F78-A444-59022335E963} = {31C27C47-58F9-40AC-BD34-A678B78B5755}
 		{CCA42FD1-7025-444E-A930-8E250BA30FA3} = {1C508E7B-7900-47DE-8395-04F9E03A3940}
 	EndGlobalSection
 EndGlobal

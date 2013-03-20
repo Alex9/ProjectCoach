@@ -1,5 +1,8 @@
-﻿namespace Xemio.ProjectCoach.Core.Services.Abstract
+﻿namespace Xemio.ProjectCoach.Core.Services
 {
+    /// <summary>
+    /// Provides authentication methods.
+    /// </summary>
     public interface IAuthenticationService
     {
         /// <summary>

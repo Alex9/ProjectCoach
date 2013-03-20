@@ -30,7 +30,7 @@ namespace Xemio.ProjectCoach.Entities.Projects
         /// </summary>
         public IList<Document> Documents { get; set; }
         /// <summary>
-        /// Gets or sets the chat ID.
+        /// Gets or sets the chat Id.
         /// </summary>
         public string ChatID { get; set; }
     }

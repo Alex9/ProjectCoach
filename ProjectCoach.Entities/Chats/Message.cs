@@ -5,7 +5,7 @@ namespace Xemio.ProjectCoach.Entities.Chats
     public class Message
     {
         /// <summary>
-        /// Gets or sets the user ID.
+        /// Gets or sets the user Id.
         /// </summary>
         public string UserID { get; set; }
         /// <summary>

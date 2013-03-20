@@ -9,29 +9,31 @@ using Raven.Client;
 using Raven.Client.Connection;
 using Raven.Json.Linq;
 using Xemio.ProjectCoach.Core.Services;
-using Xemio.ProjectCoach.Core.Services.Abstract;
 using Xemio.ProjectCoach.Entities.Documents;
 using Xemio.ProjectCoach.Entities.Projects;
 using Xemio.ProjectCoach.Entities.Users;
 
 namespace Xemio.ProjectCoach.Infrastructure.Services
 {
+    /// <summary>
+    /// Provides document-management methods.
+    /// </summary>
     public class DocumentService : IDocumentService
     {
+        #region Fields
+        private readonly IDocumentSession _documentSession;
+        #endregion Fields
+
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentService"/> class.
         /// </summary>
-        /// <param name="session">The session.</param>
-        public DocumentService(IDocumentSession session)
+        /// <param name="documentSession">The documentSession.</param>
+        public DocumentService(IDocumentSession documentSession)
         {
-            _session = session;
+            _documentSession = documentSession;
         }
         #endregion Constructors
-
-        #region Fields
-        private readonly IDocumentSession _session;
-        #endregion Fields
 
         #region IDocumentService Member
         /// <summary>
@@ -53,15 +55,15 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             Condition.Requires(creator)
                 .IsNotNull();
 
-            string attachementID = this.CreateNewAttachementID();
+            string attachementId = this.CreateNewAttachementId();
 
-            this._session.Advanced.DocumentStore.DatabaseCommands.PutAttachment(attachementID, null, data, null);
+            this._documentSession.Advanced.DocumentStore.DatabaseCommands.PutAttachment(attachementId, null, data, null);
 
             var document = new Document
             {
-                CreatedByUserID = creator.ID,
+                CreatedByUserId = creator.Id,
                 Name = name,
-                AttachementID = attachementID
+                AttachementId = attachementId
             };
 
             container.Documents.Add(document);
@@ -74,7 +76,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
         /// <summary>
         /// Creates a new (random) attachement-id.
         /// </summary>
-        private string CreateNewAttachementID()
+        private string CreateNewAttachementId()
         {
             return Guid.NewGuid().ToString();
         }

@@ -1,19 +1,17 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using Ninject.Activation.Blocks;
 using Raven.Client;
-using Xemio.ProjectCoach.Core.Services;
+using Xemio.ProjectCoach.Core.ServiceManagement;
 
-namespace Xemio.ProjectCoach.Core.ServiceManagement
+namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement
 {
     /// <summary>
-    /// Is a session for service access.
+    /// Is a documentSession for service access.
     /// Handles creation of services and dynamic resolving.
     /// </summary>
-    public class ServiceSession : IDisposable
+    public class ServiceSession : IServiceSession
     {
         #region Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceSession"/> class.
         /// </summary>

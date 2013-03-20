@@ -9,7 +9,7 @@ namespace Xemio.ProjectCoach.Entities.Projects
     public class Member
     {
         /// <summary>
-        /// Gets or sets the user ID.
+        /// Gets or sets the user Id.
         /// </summary>
         public string UserID { get; set; }
 

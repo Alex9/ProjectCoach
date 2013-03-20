@@ -2,8 +2,11 @@
 using Xemio.ProjectCoach.Entities.Documents;
 using Xemio.ProjectCoach.Entities.Users;
 
-namespace Xemio.ProjectCoach.Core.Services.Abstract
+namespace Xemio.ProjectCoach.Core.Services
 {
+    /// <summary>
+    /// Provides document-management methods.
+    /// </summary>
     public interface IDocumentService
     {
         /// <summary>

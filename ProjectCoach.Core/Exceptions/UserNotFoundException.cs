@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Xemio.ProjectCoach.Infrastructure.Exceptions
+namespace Xemio.ProjectCoach.Core.Exceptions
 {
+    /// <summary>
+    /// Gets thrown when no user with the given username was found.
+    /// </summary>
     [Serializable]
     public class UserNotFoundException : XemioException
     {

@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCA42FD1-7025-444E-A930-8E250BA30FA3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9BCEFC2D-2734-4F78-A444-59022335E963}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xemio.ProjectCoach.Infrastructure</RootNamespace>
-    <AssemblyName>ProjectCoach.Infrastructure</AssemblyName>
+    <RootNamespace>ProjectCoach.ServiceManagementTests</RootNamespace>
+    <AssemblyName>ProjectCoach.ServiceManagementTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,33 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CuttingEdge.Conditions">
-      <HintPath>..\packages\CuttingEdge.Conditions.1.2.0.0\lib\NET35\CuttingEdge.Conditions.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.2-unstable-9\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Abstractions">
-      <HintPath>..\..\..\..\..\Desktop\RavenDB\Client\Raven.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight">
+    <Reference Include="Raven.Client.Lightweight, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\RavenDB\Client\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,35 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raven\Indexes\UsernameIndex.cs" />
-    <Compile Include="ServiceManagement\Modules\RavenModule.cs" />
-    <Compile Include="ServiceManagement\Modules\ServiceModule.cs" />
-    <Compile Include="ServiceManagement\ServiceManager.cs" />
-    <Compile Include="ServiceManagement\ServiceSession.cs" />
-    <Compile Include="Services\AuthenticationService.cs" />
-    <Compile Include="Services\DocumentService.cs" />
-    <Compile Include="Services\SHA256HashService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectCoach.Core\ProjectCoach.Core.csproj">
-      <Project>{97E27884-E256-49FC-B043-E9F79A4D7AD6}</Project>
+      <Project>{97e27884-e256-49fc-b043-e9f79a4d7ad6}</Project>
       <Name>ProjectCoach.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectCoach.Entities\ProjectCoach.Entities.csproj">
-      <Project>{D81C5148-6014-4352-A7EA-FF22781544AE}</Project>
+      <Project>{d81c5148-6014-4352-a7ea-ff22781544ae}</Project>
       <Name>ProjectCoach.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProjectCoach.Infrastructure\ProjectCoach.Infrastructure.csproj">
+      <Project>{cca42fd1-7025-444e-a930-8e250ba30fa3}</Project>
+      <Name>ProjectCoach.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectCoach.Models\ProjectCoach.Models.csproj">
-      <Project>{1DEC165F-A9F3-40F4-A13D-E0A16C30AE2C}</Project>
+      <Project>{1dec165f-a9f3-40f4-a13d-e0a16c30ae2c}</Project>
       <Name>ProjectCoach.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Raven\ResultTransformer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

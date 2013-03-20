@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Xemio.ProjectCoach.Infrastructure.Exceptions {
+namespace Xemio.ProjectCoach.Core.Exceptions {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Exceptions {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Xemio.ProjectCoach.Infrastructure.Exceptions.ExceptionMessages", typeof(ExceptionMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Xemio.ProjectCoach.Core.Exceptions.ExceptionMessages", typeof(ExceptionMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

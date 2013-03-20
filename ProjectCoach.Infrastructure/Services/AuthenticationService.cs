@@ -2,34 +2,35 @@
 using System.Linq;
 using CuttingEdge.Conditions;
 using Raven.Client;
-using Raven.Client.Linq;
-using Xemio.ProjectCoach.Core.Raven.Indexes;
+using Xemio.ProjectCoach.Core.Exceptions;
 using Xemio.ProjectCoach.Core.Services;
-using Xemio.ProjectCoach.Core.Services.Abstract;
 using Xemio.ProjectCoach.Entities.Users;
-using Xemio.ProjectCoach.Infrastructure.Exceptions;
+using UsernameIndex = Xemio.ProjectCoach.Infrastructure.Raven.Indexes.UsernameIndex;
 
 namespace Xemio.ProjectCoach.Infrastructure.Services
 {
+    /// <summary>
+    /// Provides authentication methods.
+    /// </summary>
     public class AuthenticationService : IAuthenticationService
     {
+        #region Fields
+        private readonly IDocumentSession _documentSession;
+        private readonly IHashService _hashService;
+        #endregion Fields
+
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationService"/> class.
         /// </summary>
-        /// <param name="session">The session.</param>
+        /// <param name="documentSession">The documentSession.</param>
         /// <param name="hashService">The hash creator.</param>
-        public AuthenticationService(IDocumentSession session, IHashService hashService)
+        public AuthenticationService(IDocumentSession documentSession, IHashService hashService)
         {
-            _session = session;
+            _documentSession = documentSession;
             _hashService = hashService;
         }
         #endregion Constructors
-
-        #region Fields
-        private readonly IDocumentSession _session;
-        private readonly IHashService _hashService;
-        #endregion Fields
         
         #region IAuthenticationService Member
         /// <summary>
@@ -38,15 +39,15 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
         /// </summary>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
-        /// <exception cref="Xemio.ProjectCoach.Infrastructure.Exceptions.UserNotFoundException"></exception>
+        /// <exception cref="Xemio.ProjectCoach.Core.Exceptions.UserNotFoundException">Throws if no user with the given username was found.</exception>
         public bool Authenticate(string username, string password)
         {
-            Condition.Requires(username)
+            Condition.Requires(username, "username")
                 .IsNotNullOrWhiteSpace();
-            Condition.Requires(password)
+            Condition.Requires(password, "password")
                 .IsNotNullOrWhiteSpace();
 
-            User user = this._session.Query<User, UsernameIndex>()
+            User user = this._documentSession.Query<User, UsernameIndex>()
                 .FirstOrDefault(f => f.Username == username);
 
             if (user == null)

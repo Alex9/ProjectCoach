@@ -11,12 +11,12 @@
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// Gets or sets the attachement ID.
+        /// Gets or sets the attachement Id.
         /// </summary>
-        public string AttachementID { get; set; }
+        public string AttachementId { get; set; }
         /// <summary>
-        /// Gets or sets the created by user ID.
+        /// Gets or sets the created by user Id.
         /// </summary>
-        public string CreatedByUserID { get; set; }
+        public string CreatedByUserId { get; set; }
     }
 }
