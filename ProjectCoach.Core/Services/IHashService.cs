@@ -16,5 +16,21 @@
         /// </summary>
         /// <param name="input">The input string.</param>
         byte[] CreateHash(string input);
+
+        /// <summary>
+        /// Returns true when the input equals the expected value.
+        /// </summary>
+        /// <param name="input">The input value.</param>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="salt">The salt.</param>
+        bool EqualsHash(byte[] input, byte[] expected, byte[] salt);
+
+        /// <summary>
+        /// Returns true when the input equals the expected value.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="salt">The salt.</param>
+        bool EqualsHash(string input, byte[] expected, byte[] salt);
     }
 }

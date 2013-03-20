@@ -9,8 +9,12 @@ namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement
     /// Is a documentSession for service access.
     /// Handles creation of services and dynamic resolving.
     /// </summary>
-    public class ServiceSession : IServiceSession
+    internal class ServiceSession : IServiceSession
     {
+        #region Fields
+        private readonly IActivationBlock _activationBlock;
+        #endregion Fields
+
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceSession"/> class.
@@ -21,10 +25,6 @@ namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement
             this._activationBlock = ninjectKernel.BeginBlock();
         }
         #endregion Constructors
-
-        #region Fields
-        private readonly IActivationBlock _activationBlock;
-        #endregion Fields
 
         #region Methods
         /// <summary>

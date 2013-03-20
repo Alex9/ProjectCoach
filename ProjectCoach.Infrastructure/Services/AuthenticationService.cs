@@ -53,10 +53,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             if (user == null)
                 throw new UserNotFoundException(username);
 
-            List<byte> passwordHash = this._hashService.CreateHash(password).ToList();
-            passwordHash.AddRange(user.Salt);
-
-            return passwordHash.SequenceEqual(user.PasswordHash);
+            return this._hashService.EqualsHash(password, user.PasswordHash, user.Salt);
         }
         #endregion IAuthenticationService Member
     }

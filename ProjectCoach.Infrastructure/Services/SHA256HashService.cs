@@ -36,6 +36,30 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             byte[] bytes = Encoding.UTF8.GetBytes(input);
             return this.CreateHash(bytes);
         }
+        /// <summary>
+        /// Returns true when the input equals the expected value.
+        /// </summary>
+        /// <param name="input">The input value.</param>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="salt">The salt.</param>
+        public bool EqualsHash(byte[] input, byte[] expected, byte[] salt)
+        {
+            List<byte> inputList = input.ToList();
+            inputList.AddRange(salt);
+
+            return inputList.SequenceEqual(expected);
+        }
+        /// <summary>
+        /// Returns true when the input equals the expected value.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="expected">The expected value.</param>
+        /// <param name="salt">The salt.</param>
+        public bool EqualsHash(string input, byte[] expected, byte[] salt)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(input);
+            return this.EqualsHash(bytes, expected, salt);
+        }
         #endregion IHashService Member
     }
 }

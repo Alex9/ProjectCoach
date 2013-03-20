@@ -14,7 +14,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
 
         public override string IndexName
         {
-            get { return "Users/UserByUsername"; }
+            get { return "Users/ByUsername"; }
         }
     }
 }
