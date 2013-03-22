@@ -60,7 +60,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             if (user == null)
                 throw new UserNotFoundException(username);
 
-            AuthenticationData authenticationData = this._documentSession.Query<AuthenticationData, AuthenticationData_ByUserId>()
+            AuthenticationData authenticationData = this._documentSession.Query<AuthenticationData, AuthenticationDatas_ByUserId>()
                 .First(f => f.UserId == user.Id);
 
             return this._hashService.EqualsHash(password, authenticationData.PasswordHash, authenticationData.Salt);

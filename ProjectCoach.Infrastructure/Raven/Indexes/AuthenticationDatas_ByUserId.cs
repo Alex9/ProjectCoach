@@ -8,9 +8,9 @@ using Xemio.ProjectCoach.Entities.Users;
 
 namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
 {
-    internal class AuthenticationData_ByUserId : AbstractIndexCreationTask<AuthenticationData>
+    internal class AuthenticationDatas_ByUserId : AbstractIndexCreationTask<AuthenticationData>
     {
-        public AuthenticationData_ByUserId()
+        public AuthenticationDatas_ByUserId()
         {
             Map = authenticationDatas => from data in authenticationDatas
                                           select new {data.UserId};

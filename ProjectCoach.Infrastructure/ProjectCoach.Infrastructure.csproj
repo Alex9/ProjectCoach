@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raven\Indexes\AuthenticationData_ByUserId.cs" />
+    <Compile Include="Raven\Indexes\AuthenticationDatas_ByUserId.cs" />
     <Compile Include="Raven\Indexes\Users_ByUsername.cs" />
     <Compile Include="ServiceManagement\Modules\RavenModule.cs" />
     <Compile Include="ServiceManagement\Modules\ServiceModule.cs" />
