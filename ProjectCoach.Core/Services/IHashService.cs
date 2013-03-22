@@ -18,6 +18,20 @@
         byte[] CreateHash(string input);
 
         /// <summary>
+        /// Creates a hash of the given input bytes and appends the salt.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="salt">The salt.</param>
+        byte[] CreateHash(byte[] input, byte[] salt);
+
+        /// <summary>
+        /// Creates a hash of the given input string and appends the salt.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="salt">The salt.</param>
+        byte[] CreateHash(string input, byte[] salt);
+
+        /// <summary>
         /// Returns true when the input equals the expected value.
         /// </summary>
         /// <param name="input">The input value.</param>

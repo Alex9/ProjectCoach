@@ -61,6 +61,15 @@ namespace Xemio.ProjectCoach.Core.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The username &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string UsernameAlreadyExists {
+            get {
+                return ResourceManager.GetString("UsernameAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No user with the username &apos;{0}&apos; was found..
         /// </summary>
         internal static string UserNotFound {

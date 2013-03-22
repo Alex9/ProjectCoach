@@ -7,6 +7,7 @@ using Raven.Client;
 using Xemio.ProjectCoach.Core.ServiceManagement;
 using Xemio.ProjectCoach.Core.Services;
 using Xemio.ProjectCoach.Entities.Users;
+using Xemio.ProjectCoach.Infrastructure.Raven.Indexes;
 using Xemio.ProjectCoach.Infrastructure.ServiceManagement;
 
 namespace ProjectCoach.ServiceManagementTests
@@ -18,24 +19,15 @@ namespace ProjectCoach.ServiceManagementTests
             IServiceManager serviceManager = new ServiceManager();
             using (IServiceSession session = serviceManager.OpenSession())
             {
-                IDocumentSession documentSession = session.GetService<IDocumentSession>();
+                IAuthenticationService authenticationService = session.GetService<IAuthenticationService>();
+                
+                bool result = authenticationService.Authenticate("haefele", "123456");
+                Console.WriteLine(result);
 
-                for (int i = 0; i < 100; i++)
-                { 
-                    documentSession.Store(new User
-                                              {
-                                                  Username = "Günther " + i,
-                                                  EmailAddress = "Günther" + i + "@gmx.de",
-                                                  PasswordHash = new byte[] { 0x02, 0x03 },
-                                                  Salt = new byte[] { 0x02, 0x04 }
-                                              });
-                }
+                session.SaveChanges();
             }
 
-            using (IServiceSession session = serviceManager.OpenSession())
-            {
-                session.GetService<IDocumentService>();
-            }
+            Console.ReadLine();
         }
     }
 }

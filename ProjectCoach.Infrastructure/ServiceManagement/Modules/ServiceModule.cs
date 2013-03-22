@@ -16,6 +16,7 @@ namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement.Modules
             this.Bind<IAuthenticationService>().To<AuthenticationService>();
             this.Bind<IDocumentService>().To<DocumentService>();
             this.Bind<IHashService>().To<SHA256HashService>();
+            this.Bind<ISaltService>().To<SaltService>();
         }
     }
 }

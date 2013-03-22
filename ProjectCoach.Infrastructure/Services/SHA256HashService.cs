@@ -36,6 +36,30 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             byte[] bytes = Encoding.UTF8.GetBytes(input);
             return this.CreateHash(bytes);
         }
+
+        /// <summary>
+        /// Creates a hash of the given input bytes and appends the salt.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="salt">The salt.</param>
+        public byte[] CreateHash(byte[] input, byte[] salt)
+        {
+            List<byte> hash = this.CreateHash(input).ToList();
+            hash.AddRange(salt);
+
+            return hash.ToArray();
+        }
+
+        /// <summary>
+        /// Creates a hash of the given input string and appends the salt.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="salt">The salt.</param>
+        public byte[] CreateHash(string input, byte[] salt)
+        {
+            return this.CreateHash(Encoding.UTF8.GetBytes(input), salt);
+        }
+
         /// <summary>
         /// Returns true when the input equals the expected value.
         /// </summary>
@@ -44,7 +68,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
         /// <param name="salt">The salt.</param>
         public bool EqualsHash(byte[] input, byte[] expected, byte[] salt)
         {
-            List<byte> inputList = input.ToList();
+            List<byte> inputList = this.CreateHash(input).ToList(); 
             inputList.AddRange(salt);
 
             return inputList.SequenceEqual(expected);

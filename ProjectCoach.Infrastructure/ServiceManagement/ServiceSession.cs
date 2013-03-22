@@ -26,25 +26,6 @@ namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement
         }
         #endregion Constructors
 
-        #region Methods
-        /// <summary>
-        /// Resolves the given service type.
-        /// </summary>
-        /// <typeparam name="T">The type of the service.</typeparam>
-        public T GetService<T>()
-        {
-            return this._activationBlock.Get<T>();
-        }
-        /// <summary>
-        /// Saves all changes to the database.
-        /// Works like a commit-method in a transaction.
-        /// </summary>
-        public void SaveChanges()
-        {
-            this.GetService<IDocumentSession>().SaveChanges();
-        }
-        #endregion Methods
-
         #region IDisposable Member
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -54,5 +35,34 @@ namespace Xemio.ProjectCoach.Infrastructure.ServiceManagement
             this._activationBlock.Dispose();
         }
         #endregion IDisposable Member
+
+        #region IServiceSession Members
+        /// <summary>
+        /// Resolves the given service type.
+        /// </summary>
+        /// <typeparam name="T">The type of the service.</typeparam>
+        public T GetService<T>()
+        {
+            return this._activationBlock.Get<T>();
+        }
+        /// <summary>
+        /// Gets the given service.
+        /// Returns the type because of it's name.
+        /// </summary>
+        /// <typeparam name="T">The type of the service.</typeparam>
+        /// <param name="name">The name.</param>
+        public T GetService<T>(string name)
+        {
+            return this._activationBlock.Get<T>(name);
+        }
+        /// <summary>
+        /// Saves all changes to the database.
+        /// Works like a commit-method in a transaction.
+        /// </summary>
+        public void SaveChanges()
+        {
+            this.GetService<IDocumentSession>().SaveChanges();
+        }
+        #endregion
     }
 }

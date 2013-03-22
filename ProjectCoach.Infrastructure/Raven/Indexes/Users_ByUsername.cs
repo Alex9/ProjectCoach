@@ -1,20 +1,18 @@
 ﻿using System.Linq;
+using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 using Xemio.ProjectCoach.Entities.Users;
 
 namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
 {
-    internal class UsernameIndex : AbstractIndexCreationTask<User>
+    public class Users_ByUsername : AbstractIndexCreationTask<User>
     {
-        public UsernameIndex()
+        public Users_ByUsername()
         {
             Map = users => from user in users
                            select new { user.Username };
-        }
 
-        public override string IndexName
-        {
-            get { return "Users/ByUsername"; }
+            Index(f => f.Username, FieldIndexing.Analyzed);
         }
     }
 }
