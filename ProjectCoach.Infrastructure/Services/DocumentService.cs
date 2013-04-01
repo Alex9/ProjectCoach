@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CuttingEdge.Conditions;
+using Raven.Abstractions.Data;
 using Raven.Client;
 using Raven.Client.Connection;
 using Raven.Json.Linq;
@@ -40,14 +41,14 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
         /// Adds a new document to the given phase.
         /// </summary>
         /// <param name="container">The container holding the document.</param>
-        /// <param name="data">The data for the document.</param>
+        /// <param name="stream">The stream for the document.</param>
         /// <param name="name">The name for the document.</param>
         /// <param name="creator">The creator of the document.</param>
-        public Document AddDocument(IDocumentContainer container, Stream data, string name, User creator)
+        public Document AddDocument(IDocumentContainer container, Stream stream, string name, User creator)
         {
             Condition.Requires(container)
                .IsNotNull();
-            Condition.Requires(data)
+            Condition.Requires(stream)
                 .IsNotNull()
                 .Evaluate(f => f.Length > 0);
             Condition.Requires(name)
@@ -56,8 +57,7 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
                 .IsNotNull();
 
             string attachementId = this.CreateNewAttachementId();
-
-            this._documentSession.Advanced.DocumentStore.DatabaseCommands.PutAttachment(attachementId, null, data, null);
+            this._documentSession.Advanced.DocumentStore.DatabaseCommands.PutAttachment(attachementId, null, stream, null);
 
             var document = new Document
             {
@@ -69,6 +69,21 @@ namespace Xemio.ProjectCoach.Infrastructure.Services
             container.Documents.Add(document);
 
             return document;
+        }
+        /// <summary>
+        /// Returns the stream of the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        public Stream GetDocumentData(Document document)
+        {
+            Condition.Requires(document, "document")
+                .IsNotNull();
+            Condition.Requires(document.AttachementId, "document.AttachementId")
+                .IsNotNullOrWhiteSpace();
+
+            Attachment attachement = this._documentSession.Advanced.DocumentStore.DatabaseCommands.GetAttachment(document.AttachementId);
+
+            return attachement.Data();
         }
         #endregion IDocumentService Member
 

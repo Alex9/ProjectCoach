@@ -1,4 +1,6 @@
-﻿namespace Xemio.ProjectCoach.Core.Services
+﻿using System.Threading.Tasks;
+
+namespace Xemio.ProjectCoach.Core.Services
 {
     /// <summary>
     /// Provides hashing methods.

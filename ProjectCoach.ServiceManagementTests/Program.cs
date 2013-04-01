@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Raven.Client;
 using Xemio.ProjectCoach.Core.ServiceManagement;
 using Xemio.ProjectCoach.Core.Services;
 using Xemio.ProjectCoach.Entities.Users;
-using Xemio.ProjectCoach.Infrastructure.Raven.Indexes;
 using Xemio.ProjectCoach.Infrastructure.ServiceManagement;
 
 namespace ProjectCoach.ServiceManagementTests

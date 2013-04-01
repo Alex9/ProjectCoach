@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 using Xemio.ProjectCoach.Entities.Users;
 
-namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
+namespace Xemio.ProjectCoach.Infrastructure.RavenDB.Indexes
 {
     public class Users_ByUsername : AbstractIndexCreationTask<User>
     {
@@ -11,8 +10,6 @@ namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
         {
             Map = users => from user in users
                            select new { user.Username };
-
-            Index(f => f.Username, FieldIndexing.Analyzed);
         }
     }
 }

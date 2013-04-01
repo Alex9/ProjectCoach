@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using Raven.Client;
 using Xemio.ProjectCoach.Core.Exceptions;
 using NUnit;
+using NUnit.Framework;
 using Xemio.ProjectCoach.Core.Services;
 using Xemio.ProjectCoach.Entities.Users;
 using Xemio.ProjectCoach.Infrastructure.Services;
@@ -24,7 +24,7 @@ namespace Xemio.ProjectCoach.Tests.Services
             {
                 //Arrange
                 IDocumentSession session = this.DocumentStore.OpenSession();
-                IAuthenticationService unitUnderTest = new AuthenticationService(session, null);
+                IAuthenticationService unitUnderTest = new AuthenticationService(session, null, null);
 
                 //Act
                 TestDelegate @delegate = () => unitUnderTest.Authenticate(null, "password");
@@ -38,7 +38,7 @@ namespace Xemio.ProjectCoach.Tests.Services
             {
                 //Arrange
                 IDocumentSession session = this.DocumentStore.OpenSession();
-                IAuthenticationService unitUnderTest = new AuthenticationService(session, null);
+                IAuthenticationService unitUnderTest = new AuthenticationService(session, null, null);
 
                 //Act
                 TestDelegate @delegate = () => unitUnderTest.Authenticate("", "password");
@@ -52,7 +52,7 @@ namespace Xemio.ProjectCoach.Tests.Services
             {
                 //Arrange
                 IDocumentSession session = this.DocumentStore.OpenSession();
-                IAuthenticationService unitUnderTest = new AuthenticationService(session, null);
+                IAuthenticationService unitUnderTest = new AuthenticationService(session, null, null);
 
                 //Act
                 TestDelegate @delegate = () => unitUnderTest.Authenticate("username", null);
@@ -66,7 +66,7 @@ namespace Xemio.ProjectCoach.Tests.Services
             {
                 //Arrange
                 IDocumentSession session = this.DocumentStore.OpenSession();
-                IAuthenticationService unitUnderTest = new AuthenticationService(session, null);
+                IAuthenticationService unitUnderTest = new AuthenticationService(session, null, null);
 
                 //Act
                 TestDelegate @delegate = () => unitUnderTest.Authenticate("username", "");
@@ -80,7 +80,7 @@ namespace Xemio.ProjectCoach.Tests.Services
             {
                 //Arrange
                 IDocumentSession session = this.DocumentStore.OpenSession();
-                IAuthenticationService unitUnderTest = new AuthenticationService(session, null);
+                IAuthenticationService unitUnderTest = new AuthenticationService(session, null, null);
 
                 //Act
                 TestDelegate @delegate = () => unitUnderTest.Authenticate("leRandomUsername", "lePassword");

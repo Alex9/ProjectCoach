@@ -22,7 +22,7 @@ namespace Xemio.ProjectCoach.Core.Extensions
             {
                 return Regex.IsMatch(email, EMAIL_PATTERN, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
-            catch (RegexMatchTimeoutException exception)
+            catch (RegexMatchTimeoutException)
             {
                 return false;
             }

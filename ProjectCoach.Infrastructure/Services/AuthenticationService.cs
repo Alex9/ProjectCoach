@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CuttingEdge.Conditions;
 using Raven.Client;
 using Xemio.ProjectCoach.Core.Exceptions;
 using Xemio.ProjectCoach.Core.Services;
 using Xemio.ProjectCoach.Core.Extensions;
 using Xemio.ProjectCoach.Entities.Users;
-using Xemio.ProjectCoach.Infrastructure.Raven.Indexes;
+using Xemio.ProjectCoach.Infrastructure.RavenDB.Indexes;
 
 namespace Xemio.ProjectCoach.Infrastructure.Services
 {

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Raven.Client.Indexes;
 using Xemio.ProjectCoach.Entities.Users;
 
-namespace Xemio.ProjectCoach.Infrastructure.Raven.Indexes
+namespace Xemio.ProjectCoach.Infrastructure.RavenDB.Indexes
 {
     internal class AuthenticationDatas_ByUserId : AbstractIndexCreationTask<AuthenticationData>
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Xemio.ProjectCoach.Entities.Chats;
 using Xemio.ProjectCoach.Entities.Documents;
 
 namespace Xemio.ProjectCoach.Entities.Projects
@@ -30,8 +31,8 @@ namespace Xemio.ProjectCoach.Entities.Projects
         /// </summary>
         public IList<Document> Documents { get; set; }
         /// <summary>
-        /// Gets or sets the chat Id.
+        /// Gets or sets the chat.
         /// </summary>
-        public string ChatID { get; set; }
+        public Chat Chat { get; set; }
     }
 }
